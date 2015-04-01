@@ -97,8 +97,8 @@ public class MainActivity extends Activity {
 		case R.id.enter:
 			expression1.setText(expression2.getText() + "=");
 			try {
-				Parser parser = new Parser("" + expression2.getText());
-				expression2.setText(String.format("%.2f",parser.process().calculate()));
+				Operation op = new Operation();
+				expression2.setText(op.Calc("" + expression2.getText()));
 			} catch (Exception ex) {
 				expression2.setText("Incorrect format of expression: " + ex.getMessage());
 			}
