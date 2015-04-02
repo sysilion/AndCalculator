@@ -3,6 +3,8 @@ package tk.bizu.andcalculator;
 import java.util.Stack;
 import java.util.StringTokenizer;
 
+import android.util.Log;
+
 public class Operation {
 	protected String Calc(String str){
 		if(str.indexOf('(') != -1){
@@ -12,13 +14,15 @@ public class Operation {
 			str = str.substring(0, fs) + s + str.substring(ls+1, str.length());
 		}
 		
-		int cnt = 0;
+		double cnt = 0;
 		Stack <Double> Stk_Num = new Stack <Double>();
 		StringTokenizer ST_Num = new StringTokenizer(str,"+-/* ");
-		StringTokenizer ST_Oper = new StringTokenizer(str,"1234567890 ");
+		StringTokenizer ST_Oper = new StringTokenizer(str,"1234567890. ");
 		
 		Stk_Num.push(Double.parseDouble(ST_Num.nextToken()));
+
 		while(ST_Num.hasMoreTokens()){
+			
 			char oper = ST_Oper.nextToken().charAt(0);
 			String num = ST_Num.nextToken();
 			double a;
@@ -44,7 +48,6 @@ public class Operation {
 		while(!Stk_Num.isEmpty()){
 			cnt += Stk_Num.pop();
 		}
-		
 		return String.format("%.2f", cnt);
 	}
 }

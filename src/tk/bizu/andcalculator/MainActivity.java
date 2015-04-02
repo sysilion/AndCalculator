@@ -100,7 +100,7 @@ public class MainActivity extends Activity {
 				Operation op = new Operation();
 				expression2.setText(op.Calc("" + expression2.getText()));
 			} catch (Exception ex) {
-				expression2.setText("Incorrect format of expression: " + ex.getMessage());
+				expression2.setText(ex.getMessage());
 			}
 			calc_complete = true;
 			// Toast.makeText(getApplicationContext(), calc_complete+"",
